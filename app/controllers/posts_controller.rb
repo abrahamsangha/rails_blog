@@ -3,19 +3,11 @@ class PostsController < ApplicationController
     @posts = Post.order('created_at DESC')
   end
 
-  def new
-
-  end
-
   def create
     @post = Post.create(params[:post])
   end
 
   def show
-    @post = Post.find(params[:id])
-  end
-
-  def edit
     @post = Post.find(params[:id])
   end
 
