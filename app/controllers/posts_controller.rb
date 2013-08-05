@@ -9,14 +9,23 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(params[:post])
-    redirect_to posts_path
+    if @post.errors.any?
+      @errors = []
+      @post.errors.each do |attribute, message|
+        @errors << "#{attribute}: #{message}"
+      end
+      render "posts/new"
+    else
+      redirect_to posts_path
+    end
+
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by_id(params[:id])
   end
 
-  def delete
+  def destroy
     Post.delete(params[:id])
     redirect_to posts_path
   end
