@@ -3,8 +3,13 @@ class PostsController < ApplicationController
     @posts = Post.order('created_at DESC')
   end
 
+  def new
+    @post = Post.new
+  end
+
   def create
     @post = Post.create(params[:post])
+    redirect_to posts_path
   end
 
   def show
@@ -13,5 +18,6 @@ class PostsController < ApplicationController
 
   def delete
     Post.delete(params[:id])
+    redirect_to posts_path
   end
 end
