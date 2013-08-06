@@ -1,0 +1,12 @@
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <h3><%= error %></h3><br>
+  <% end %>
+<% end %>
+
+<%= form_for @post do |f| %>
+  Title: <%= f.text_field :title %><br>
+  Author: <%= f.text_field :author %><br>
+  Content: <%= f.text_area :content, size: "60x12" %>
+  <%= f.submit "Create" %>
+<% end %>

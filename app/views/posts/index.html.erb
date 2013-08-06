@@ -1,0 +1,9 @@
+<h1>Baddest Blog Ever</h1>
+
+<% @posts.each do |post| %>
+ <h2><%= link_to post.title, post %></h2>
+ <h3><%= post.author %></h3>
+ <%= post.content %><br>
+ <% end %>
+
+<a href="<%= new_post_path %>">Create New Post</a><br>
